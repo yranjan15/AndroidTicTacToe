@@ -143,4 +143,49 @@ public class Table implements ShapeFigure {
 
         return base;
     }
+
+    //converts the grid coordinates of the object to the corresponding
+    //array indices in the the board array
+    public int[] grid_coord_to_array_coord(int [] input)
+    {
+
+        int row_index = 0;
+        int col_index = 0;
+
+        int x = input[0];
+        int y = input[2];
+        if(x == hline1[0])
+        {
+            col_index = 0;
+        }
+
+        else if(x == vline1[0])
+        {
+            col_index = 1;
+        }
+
+        else
+        {
+            col_index = 2;
+        }
+
+        if(y == vline1[1])
+        {
+            row_index = 0;
+        }
+
+        else if(y == hline1[1])
+        {
+            row_index = 1;
+        }
+
+        else
+        {
+            row_index = 2;
+        }
+
+        int [] result = {row_index, col_index};
+
+        return result;
+    }
 }

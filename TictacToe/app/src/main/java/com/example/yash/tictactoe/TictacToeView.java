@@ -73,25 +73,57 @@ public class TictacToeView extends View  {
         int y_coord = (int)event.getY();
 
         boolean touched = tboard.getTable().isOnboard(x_coord,y_coord);
+        boolean win = tboard.getWinstatus();
 
-        if(touched && (eventAction == MotionEvent.ACTION_DOWN))
+        if(touched && (eventAction == MotionEvent.ACTION_DOWN) && !win)
         {
             int [] gridcoord = tboard.getTable().getGridcoordinates(x_coord, y_coord);
 
-            if(player1)
+            int [] arraycoord = tboard.getTable().grid_coord_to_array_coord(gridcoord);
+
+            if(!tboard.moveMade(arraycoord))
             {
-                Log.e("error", "cross");
-                drawShapes.add(new Cross(gridcoord[0], gridcoord[1], gridcoord[2], gridcoord[3]));
-                player1 = false;
+
+                if (player1) {
+                    Log.e("error", "cross");
+                    drawShapes.add(new Cross(gridcoord[0], gridcoord[1], gridcoord[2], gridcoord[3]));
+
+                    Log.e("row", ""+ arraycoord[0]);
+                    Log.e("col", ""+ arraycoord[1]);
+                    tboard.setMove(arraycoord, player1);
+                    player1 = false;
+
+                    tboard.move_counter++;
+                } else {
+                    Log.e("error", "oval");
+                    drawShapes.add(new Oval(gridcoord[0], gridcoord[1], gridcoord[2], gridcoord[3]));
+
+                    Log.e("row", ""+ arraycoord[0]);
+                    Log.e("col", ""+ arraycoord[1]);
+                    tboard.setMove(arraycoord, player1);
+                    player1 = true;
+                    tboard.move_counter++;
+                }
+            }
+        }
+
+        if(tboard.move_counter >= 3)
+        {
+            int result = tboard.checkWin();
+
+            if(result == 1)
+            {
+                Log.e("error", "X player win");
+                tboard.setWinstatus(true);
             }
 
-            else
+            if(result == 2)
             {
-                Log.e("error", "oval");
-                drawShapes.add(new Oval(gridcoord[0], gridcoord[1], gridcoord[2], gridcoord[3]));
-                player1 = true;
+                Log.e("error", "Oval player win");
+                tboard.setWinstatus(true);
             }
 
+            Log.e("Result", "" + result);
         }
         // tell the View to redraw the Canvas
         invalidate();

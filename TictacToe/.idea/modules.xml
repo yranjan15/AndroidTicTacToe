@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TictacToe.iml" filepath="$PROJECT_DIR$/TictacToe.iml" />
+      <module fileurl="file://C:\Users\yash\Documents\AndroidTicTacToe\TictacToe\TictacToe.iml" filepath="C:\Users\yash\Documents\AndroidTicTacToe\TictacToe\TictacToe.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\yash\Documents\AndroidTicTacToe\TictacToe\app\app.iml" filepath="C:\Users\yash\Documents\AndroidTicTacToe\TictacToe\app\app.iml" />
     </modules>
   </component>
 </project>
