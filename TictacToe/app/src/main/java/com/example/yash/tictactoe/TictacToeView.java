@@ -114,6 +114,8 @@ public class TictacToeView extends View  {
             if(result == 1)
             {
                 Log.e("error", "X player win");
+                TextFigure status = new TextFigure("Player X wins!");
+                drawShapes.add(status);
                 tboard.setWinstatus(true);
             }
 
@@ -121,10 +123,21 @@ public class TictacToeView extends View  {
             {
                 Log.e("error", "Oval player win");
                 tboard.setWinstatus(true);
+                TextFigure status = new TextFigure("Player Oval wins!");
+                drawShapes.add(status);
+            }
+
+            if(tboard.move_counter == 9 && result == -1)
+            {
+                TextFigure status = new TextFigure("Game is a Draw!");
+                drawShapes.add(status);
+                tboard.setWinstatus(true);
             }
 
             Log.e("Result", "" + result);
         }
+
+
         // tell the View to redraw the Canvas
         invalidate();
 

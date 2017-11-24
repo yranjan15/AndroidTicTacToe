@@ -48,12 +48,6 @@ public class Table implements ShapeFigure {
             hline2 = new int[]{x / 4, (y / 2) + (x / 6), 3 * (x / 4), (y / 2) + (x / 6)};
             vline1 = new int []{(x/4) + (x/6), (y/2) - (x/6), (x/4) + (x/6), (y/2) + (x/3)};
             vline2 = new int []{(x/4 + x/3), (y/2)- (x/6), (x/4) + (x/3), (y/2) + (x/3)};
-
-            Paint p2 = new Paint();
-            p2.setTextSize(100);
-            p2.setColor(Color.BLACK);
-            p2.setTextAlign(Paint.Align.CENTER);
-            canvas.drawText("Player X wins",x/2, 3*(canvas.getHeight())/4 , p2);
         }
 
         canvas.drawLine(hline1[0], hline1[1], hline1[2], hline1[3], paint);
